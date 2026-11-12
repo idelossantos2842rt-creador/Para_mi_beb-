@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Kely - Con amor infinito</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Canvas de corazones flotantes de fondo */
+        #hearts-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 105, 180, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #ff69b4;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .letter-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .letter-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Resaltados importantes con texto blanco brillante y acento sutil */
+        .highlight {
+            color: #ffffff;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-size: 1.1rem;
+            color: #ff69b4;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        /* Corazón de corazones animado */
+        .heart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0 10px 0;
+            position: relative;
+            height: 100px;
+        }
+
+        .pulsing-heart {
+            font-size: 3rem;
+            color: #ff1e43;
+            animation: pulse 1.5s infinite ease-in-out;
+            cursor: pointer;
+            user-select: none;
+            z-index: 3;
+            text-shadow: 0 0 15px rgba(255, 30, 67, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Contenedor para las imágenes que el usuario agregará */
+        .image-placeholder-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .img-box {
+            width: 150px;
+            height: 150px;
+            border: 2px dashed rgba(255, 105, 180, 0.4);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            position: relative;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .img-box span {
+            font-size: 0.8rem;
+            color: #888;
+            text-align: center;
+            padding: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px 15px;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+            .letter-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Canvas para corazones flotantes de fondo -->
+    <canvas id="hearts-canvas"></canvas>
+
+    <div class="container">
+        <h1>Holiii, mi amor. ♡</h1>
+        
+        <div class="letter-content">
+            <p>Tengo full sin escribirte una carta sin motivo, y hoy simplemente me dieron ganas de hacerlo. No porque haya una fecha que celebrar ni porque necesite una razón especial, sino porque a veces siento tantas cosas bonitas por ti que no quiero dejar que se queden guardadas. Quiero que puedas leerlas, volver a ellas y <span class="highlight">recordar siempre lo importante que eres para mí💗💗💗</span>.</p>
+            
+            <p>Amor, esta carta es para decirte, una vez más, <span class="highlight">lo muchísimo que te amo</span>, lo feliz que me haces sentir y <span class="highlight">lo enamorada que estoy de ti</span>. Quizás no te lo he dicho con todas las letras, o quizás no te lo he repetido lo suficiente, pero <span class="highlight">eres el amor de mi vida</span>. Eres esa persona que llegó a mi corazón y encontró un lugar que ahora lleva tu nombre. Me encanta tenerte en mi vida, compartir mis días contigo y saber que, entre tantas personas en el mundo, tengo la dicha de amarte a ti.💗</p>
+            
+            <p>Gracias por quedarte, por elegirme y <span class="highlight">por amarme tan bonito</span>. Gracias por cada gesto, cada palabra, cada abrazo, cada risa y por todas esas pequeñas cosas que quizás para ti parecen sencillas, pero que para mí significan muchísimo. Me haces sentir querida, especial y afortunada. <span class="highlight">Eres un novio maravilloso</span> y estoy demasiado orgullosa de la persona que eres, de lo que sueñas, de lo que haces y de todo lo que todavía estás construyendo. Quiero verte cumplir tus metas, celebrar tus logros y acompañarte también en los días en los que las cosas no salgan como esperabas.💗</p>
+            
+            <p>Quiero que sepas que <span class="highlight">puedes contar conmigo</span>. No solamente cuando todo esté bien, cuando tengamos motivos para reír o cuando la vida se sienta fácil, sino también cuando estés cansado, preocupado, frustrado o cuando necesites un poquito de paz. <span class="highlight">Quiero ser tu apoyo, tu compañera</span> y esa persona con la que puedas bajar la guardia. No tengo que tener todas las respuestas para estar a tu lado; muchas veces bastará con escucharte, abrazarte y recordarte que no tienes que poder con todo tú solo.💗</p>
+            
+            <p>Hahahah, y mira que antes me daba miedo mostrarte <span class="highlight">mi lado intenso, cursi y vulnerable</span>. Ahora ya no quiero esconderlo. Contigo me nace ser así: decirte que te extraño, que quiero mimos, que me haces falta, que me encanta hablar contigo y que podría pasar horas demostrándote cariño. Tienes una parte enorme de mi corazón, Kely, y quiero que conozcas todas mis versiones: la dulce, la sensible, la que se ríe por cualquier tontería, la que se pone sentimental y hasta la que a veces no sabe cómo explicar lo que siente.💗<span class="highlight">Gracias por hacerme sentir que puedo ser yo</span>, sin tener que fingir que siento menos de lo que realmente siento.</p>
+            
+            <p>No quiero que confundas mis ganas de crecer contigo con la idea de que tengo que dejar de ser quien soy. Quiero seguir aprendiendo, madurando y convirtiéndome en una mejor versión de mí misma, así como deseo verte crecer y convertirte en todo lo que sueñas. Quiero que construyamos una relación en la que los dos podamos sentirnos amados, escuchados, respetados y seguros; donde podamos hablar de lo que nos duele, celebrar lo que nos hace felices y recordar que estamos del mismo lado. Quiero cuidarte y también aprender a dejarme cuidar por ti.💗</p>
+            
+            <p>Prometo seguir poniendo amor, paciencia y dedicación en lo nuestro. Prometo apoyarte en tus proyectos, creer en ti incluso en los días en que dudes de ti mismo y hacerte sentir lo valioso que eres. También quiero que sigamos teniendo detalles, conversaciones largas, bromas tontas, momentos espontáneos y recuerdos que algún día podamos mirar con una sonrisa. No espero que seamos perfectos; <span class="highlight">quiero que seamos reales</span>, que nos elijamos con intención y que nunca dejemos de tratarnos con ternura.💗</p>
+            
+            <p>Eres <span class="highlight">mi persona favorita</span>, mi amor bonito y una de las razones por las que sonrío de una manera que no siempre sé explicar. Gracias por hacerme tan feliz. Gracias por existir, por ser tú y por permitirme compartir contigo este pedacito de vida. Si algún día se te olvida cuánto te amo, vuelve a leer esto: aquí está escrito, con todo mi corazón, que <span class="highlight">te elijo, te admiro y te amo muchísimo 💗💗💗</span>.</p>
+            
+            <p>Y sí, amor, <span class="highlight">eres todo mi mundo</span> en esa forma tan bonita en la que alguien puede convertirse en un hogar para el corazón. Me hace ilusión seguir viviendo cosas contigo, seguir conociéndote y descubrir todas las razones nuevas por las que voy a enamorarme de ti 💗.</p>
+        </div>
+
+        <!-- Espacios para las imágenes (puedes cambiar los atributos src con tus archivos) -->
+        <div class="image-placeholder-container">
+            <div class="img-box">
+                <!-- Cambia 'imagen1.jpg' por el nombre de tu archivo -->
+                <img src="spiderman,jpeg" alt="Foto especial 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">Coloca tu imagen aquí</span>
+            </div>
+            <div class="img-box">
+                <!-- Cambia 'imagen2.jpg' por el nombre de tu archivo -->
+                <img src="hellokitty.jpeg" alt="Foto especial 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">Coloca tu imagen aquí</span>
+            </div>
+        </div>
+
+        <!-- Corazón animado centrado -->
+        <div class="heart-container">
+            <div class="pulsing-heart" title="¡Te amo!">💗</div>
+        </div>
+
+        
+    </div>
+
+    <script>
+        // Script para animación de corazones flotantes en el fondo
+        const canvas = document.getElementById('hearts-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const hearts = [];
+        const numHearts = 25;
+
+        class Heart {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = height + Math.random() * 100;
+                this.size = Math.random() * 12 + 8;
+                this.speed = Math.random() * 1 + 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
+                this.angle = Math.random() * Math.PI * 2;
+                this.spin = (Math.random() - 0.5) * 0.02;
+            }
+
+            update() {
+                this.y -= this.speed;
+                this.angle += this.spin;
+                if (this.y < -50) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = '#ff69b4';
+                ctx.font = `${this.size}px Arial`;
+                ctx.fillText('♥', 0, 0);
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < numHearts; i++) {
+            hearts.push(new Heart());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            hearts.forEach(heart => {
+                heart.update();
+                heart.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
